@@ -1,0 +1,44 @@
+{
+    "flights": [
+    {
+        "departure_city":"Poznan",
+        "departure_airport_code":"PZN",
+        "dest_city":"Berlin",
+        "dest_airport_code":"BXR",
+        "outbound_date":"22.06.2023",
+        "inbound_date":"22.07.2023",
+        "lowestPrice":70,
+        "stop_overs":0,
+        "via_city":"none"
+
+
+    },
+    {
+        "departure_city":"Poznan",
+        "departure_airport_code":"PZN",
+        "dest_city":"Berlin",
+        "dest_airport_code":"BXR",
+        "outbound_date":"22.06.2023",
+        "inbound_date":"22.07.2023",
+        "lowestPrice":70,
+        "stop_overs":0,
+        "via_city":"none"
+
+
+    },
+    {"departure_airport_code": "POZ",
+ "departure_city": "Poznań",
+ "dest_airport_code": "BVA",
+ "dest_city": "Paris",
+ "inbound_date": "2023-10-29",
+ "lowestPrice": 24,
+ "outbound_date": "2023-10-20",
+ "stop_overs": 1,
+ "via_city": "Berlin"}
+   
+    ] 
+    
+    
+    
+    
+    }
