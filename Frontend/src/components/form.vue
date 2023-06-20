@@ -3,7 +3,15 @@
 
         <div id="form">
 
-       <h3 class="text-white">Booking Details</h3>
+       <h3 class="text-black">Booking Details</h3>
+
+       <div id="input3">
+   
+   <input type="radio" id="input-group" v-model="isOnewaySelected" @click="isReturnSelected=false" />
+   <label for="input-group" class="text-black">One Way</label>
+   <input type="radio" id="input-group" v-model="isReturnSelected"  @click="isOnewaySelected=false"/>
+   <label for="input-group" class="text-black">Round Trip</label>
+    </div>
 
     <div id="input">
       <input type="text" id="input-group" v-model="from" placeholder="From"/>
@@ -27,21 +35,17 @@
     <input type="number" min="0" id="input-group"  placeholder="Max Stop overs" v-model="maxStopOver" />
     </div>
 
-    <div id="input3">
-    <span class="text-primary" id="input-group"><h6> Select your Fare</h6></span>
-    <input type="radio" id="input-group" v-model="isOnewaySelected" @click="isReturnSelected=false" />
-    <label for="input-group" class="text-white">One Way</label>
-    <input type="radio" id="input-group" v-model="isReturnSelected"  @click="isOnewaySelected=false"/>
-    <label for="input-group" class="text-white">Round Trip</label>
-     </div>
-
+ <div class="btnStyle">
+  <button class="search" type="submit" @click="handleSubmit">Search</button>
+ </div>
+    
         </div>
       
 
   
       <!-- Add any other form fields you require -->
   
-      <button class="search" type="submit" @click="handleSubmit">Submit</button>
+      
     </div>
   </template>
   
@@ -77,20 +81,21 @@
   };
   </script>
   <style>
+
 #form{
-    background-color: #000;
-    height: 500px;
+    background-color: #ffffff;
+    height: auto;
     width: 700px;
     margin: auto;
     padding: 20px;
-    opacity: 0.7;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }#form h3{
-    border-bottom:2px solid #3399ff; 
+    border-bottom:2px solid #3453d1; 
     width:210px;
     padding: 5px;
 }
 ::placeholder{
-    color: #fff;
+    color: #000;
 }
 
 #input #input-group{
@@ -103,10 +108,19 @@
     background: transparent ;
 
 }
+#input3{
+  display: flex;
+    align-items:baseline;
+    margin: 20px;
+    margin-left: 0;
+}
 
 #input3 #input-group{
-    margin-left:50px ;
+    margin-left:20px ;
 
+}
+#input3 h6{
+  color: #3453d1;
 }
 
 #input2 #input-group{
@@ -117,7 +131,7 @@
     border-right:none ;
     outline: none;
     background: transparent ;
-    color: #fff;
+    color: #000;
 }
 #input4 #input-group{
     width: 300px;
@@ -127,10 +141,10 @@
     border-right:none ;
     outline: none;
     background: transparent ;
-    color: #fff;
+    color: #000;
 }
 #input4{
-    color: #fff;
+    color: #000;
 }
 .search{
 
@@ -142,12 +156,12 @@
   cursor: pointer;
   display: inline-flex;
   fill: #000;
-  font-family: Inter,sans-serif;
+ 
   font-size: 16px;
   font-weight: 600;
   height: 48px;
   justify-content: center;
-  letter-spacing: -.8px;
+ 
   line-height: 24px;
   min-width: 140px;
   outline: 0;
@@ -165,21 +179,25 @@
 }
 
 .search:hover {
-  border-color: #3399ff;
-  color: #3399ff;
-  fill: #3399ff;
+  border-color: #3453d1;
+  color: #3453d1;
+  fill: #3453d1;
 }
 
 .search:active {
-  border-color: #3399ff;
-  color: #3399ff;
-  fill: #3399ff;
+  border-color: #3453d1;
+  color: #3453d1;
+  fill: #3453d1;
 }
 
 @media (min-width: 768px) {
   .search {
     min-width: 170px;
   }
+}
+.btnStyle{
+  text-align: center;
+  margin: 30px;
 }
 
 </style>

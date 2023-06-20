@@ -3,8 +3,8 @@
     {
         "departure_city":"Poznan",
         "departure_airport_code":"PZN",
-        "dest_city":"Berlin",
-        "dest_airport_code":"BXR",
+        "dest_city":"Quala Lampur",
+        "dest_airport_code":"QAL",
         "outbound_date":"22.06.2023",
         "inbound_date":"22.07.2023",
         "lowestPrice":70,
@@ -14,9 +14,9 @@
 
     },
     {
-        "departure_city":"Poznan",
-        "departure_airport_code":"PZN",
-        "dest_city":"Berlin",
+        "departure_city":"South Africa",
+        "departure_airport_code":"SAF",
+        "dest_city":"Cap Town",
         "dest_airport_code":"BXR",
         "outbound_date":"22.06.2023",
         "inbound_date":"22.07.2023",

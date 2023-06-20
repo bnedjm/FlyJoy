@@ -4,7 +4,8 @@ import flightCard from './components/flightCard.vue';
 </script>
 
 <template>
-  <div>
+  
+  <div >
     <FlightBookingForm></FlightBookingForm>
    
   </div>
@@ -16,6 +17,7 @@ import flightCard from './components/flightCard.vue';
 </template>
 
 <style scoped>
+
 header {
   line-height: 1.5;
 }
