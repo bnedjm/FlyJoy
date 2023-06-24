@@ -4,44 +4,56 @@ import flightCard from './components/flightCard.vue';
 </script>
 
 <template>
-  
-  <div >
+<div class="flex-container">
+
+
+  <div class="flex-item">
     <FlightBookingForm></FlightBookingForm>
-   
   </div>
-  <div class="col-md-10">
-      <div class="d-flex flex-wrap justify-content-end">
+  
+  <div class=" flex-item d-flex flex-wrap ">
   <flightCard></flightCard>
   </div>
-  </div>
+
+
+</div>
 </template>
 
 <style scoped>
+/* .grid-container{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+} */
+.flex-container{
+  display: flex;
+gap: 3rem;
+justify-content: center;
 
-header {
-  line-height: 1.5;
+}
+.flex-item{
+  flex: 1;
+  max-width: 700px;
+ 
+}
+@media(max-width:1300px){
+  .flex-container{
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .flex-item{
+    align-items: center;
+    justify-content: center;
+  }
+}
+.searchForm{
+flex-basis: 700px;
+}
+.searchResult{
+  flex-basis: 600px;
+
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>

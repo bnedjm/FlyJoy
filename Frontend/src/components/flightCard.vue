@@ -65,20 +65,7 @@
     <!-- </div> -->
   </div>
 </template>
-<!-- <template>
-    <div class="card mb-3 mr-3" v-for="flightItem in flight" :key="flightItem.id">
-      <div class="card-header">
-        {{ flightItem.departure_city }} ({{ flightItem.departure_airport_code }}) to {{ flightItem.dest_city }} ({{ flightItem.dest_airport_code }})
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Outbound: {{ flightItem.outbound_date }}</h5>
-        <h5 class="card-title">Inbound: {{ flightItem.inbound_date }}</h5>
-        <p class="card-text">Price: {{ flightItem.lowestPrice }}</p>
-        <p class="card-text">Number of Stopovers: {{ flightItem.stop_overs }}</p>
-        <p v-if="stopoverCount > 0">Stopover City: {{ flightItem.via_city }}</p>
-      </div>
-    </div>
-  </template> -->
+
   
   <script>
 import flightData from '../flightdetails.json'
@@ -86,7 +73,8 @@ import flightData from '../flightdetails.json'
   export default {
     data(){
 return{
-    flight:flightData.flights
+    flight:flightData.flights,
+    results:[],
 }
     },
     props: {
@@ -98,7 +86,30 @@ return{
       inboundDate: String,
       price: Number,
       stopoverCount: Number,
-      stopoverCity: String
+      stopoverCity: String,
+      flightResults:Function,
+    },
+    methods:{
+      Mounted(){
+     
+     fetch('https://flyjoy-41368-default-rtdb.europe-west1.firebasedatabase.app/flightSearch.json')
+     .then(response=>{if(response.ok){
+       return response.json()
+     }})
+     .then(data=>{console.log(data);
+    const results=[];
+    for(const id in data){
+      results.push({
+        id:id,
+
+      })
+    }
+    }
+
+     
+     )
+   
+   }
     }
   };
   </script>
@@ -111,6 +122,16 @@ return{
     width: 600px;
     margin-bottom: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  @media(max-width: 1300px){
+    .flight-card{
+      width: 395px;
+      padding: 5px;
+    }
+    .dates{
+      display: flex;
+      align-items: center;
+    }
   }
   
   .flight-card-header {
@@ -195,8 +216,3 @@ return{
     color: #777;
   }
   </style>
-hola hola
-line line
-  this is a test line 
-  this a second line
- i make changes

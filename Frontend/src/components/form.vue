@@ -7,9 +7,9 @@
 
        <div id="input3">
    
-   <input type="radio" id="input-group" v-model="isOnewaySelected" @click="isReturnSelected=false" />
+   <input type="checkbox" id="input-group" v-model="isOnewaySelected" @click="isReturnSelected=false" />
    <label for="input-group" class="text-black">One Way</label>
-   <input type="radio" id="input-group" v-model="isReturnSelected"  @click="isOnewaySelected=false"/>
+   <input type="checkbox" id="input-group" v-model="isReturnSelected" @click="isOnewaySelected=false" />
    <label for="input-group" class="text-black">Round Trip</label>
     </div>
 
@@ -23,7 +23,7 @@
       <input type="date" id="input-group"  v-model="departureDate" />
   
    
-      <input type="date" id="input-group" v-model="returnDate"  />
+      <input type="date" id="input-group" v-model="returnDate" :disabled="isOnewaySelected" />
     </div>
       
     
@@ -36,7 +36,7 @@
     </div>
 
  <div class="btnStyle">
-  <button class="search" type="submit" @click="handleSubmit">Search</button>
+  <button class="search" type="submit" @click="andleSubmit">Search</button>
  </div>
     
         </div>
@@ -63,22 +63,49 @@
         stayDurationFrom:null,
         stayDurationTo:null,
         maxStopOver:null,
+        flightType:((this.isOnewaySelected===true)?this.isOnewaySelected="oneway":this.isReturnSelected='round'),
         // Add any other form fields you require
       };
     },
     methods: {
-      // handleSubmit() {
-      //   console.log('Form submitted');
-      //   console.log('From:', this.from);
-      //   console.log('To:', this.to);
-      //   console.log('Departure Date:', this.departureDate);
-      //   console.log('Return Date:', this.returnDate);
-      //   console.log('Is Return Selected:', this.isReturnSelected);
-      //   // Perform additional logic here, such as validation or API requests
-      // },
-    
-    }
-  };
+      handleSubmit() {
+        console.log('Form submitted');
+        console.log('Is Return Selected:', this.isReturnSelected);
+        console.log('Is One way Selected:', this.isOnewaySelected);
+        console.log('Flight type: ', this.flightType);
+        console.log('From:', this.from);
+        console.log('To:', this.to);
+        console.log('Departure Date:', this.departureDate);
+        console.log('Return Date:', this.returnDate);
+        console.log('Duration from: ',this.stayDurationFrom);
+        console.log('Duration to: ',this.stayDurationTo);
+        console.log('Max stopovers: ',this.maxStopOver);
+        fetch('https://flyjoy-41368-default-rtdb.europe-west1.firebasedatabase.app/flightSearch.json',{
+  method:'POST',
+  headers:{
+    'content-type':'application/json'
+          },
+  body:JSON.stringify({
+            flight_type: this.flightType,
+            fly_from: this.from,
+            fly_to: this.to,
+            date_from: this.departureDate,
+            date_to: this.returnDate,
+            nights_in_dst_from: this.stayDurationFrom,
+            nights_in_dst_to: this.stayDurationTo,
+            max_stopovers: this.maxStopOver,
+            curr: "PLN",
+            one_for_city: 1,
+       })
+  }
+)
+   
+      },
+      
+
+
+   } 
+}
   </script>
   <style>
 
@@ -86,10 +113,21 @@
     background-color: #ffffff;
     height: auto;
     width: 700px;
-    margin: auto;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}#form h3{
+}
+@media(max-width:1300px){
+  #form{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+  }
+}
+
+
+#form h3{
     border-bottom:2px solid #3453d1; 
     width:210px;
     padding: 5px;
