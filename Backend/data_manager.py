@@ -74,3 +74,4 @@ class DataManager:
 # data_manager = DataManager()
 # response = data_manager.get_dest_info()
 # print(response)
+# gitlab test
