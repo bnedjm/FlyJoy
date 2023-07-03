@@ -69,7 +69,7 @@ class DataManager:
     #     self.cx_info = cursor.fetchall()
     #     cursor.close()
     #     return self.cx_info
-
+    #     gitlab test
 
 # data_manager = DataManager()
 # response = data_manager.get_dest_info()
