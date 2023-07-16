@@ -30,9 +30,9 @@
  "departure_city": "Poznań",
  "dest_airport_code": "BVA",
  "dest_city": "Paris",
- "inbound_date": "2023-10-29",
+ "inbound_date": "2023.10.29",
  "lowestPrice": 24,
- "outbound_date": "2023-10-20",
+ "outbound_date": "2023.10.20",
  "stop_overs": 1,
  "via_city": "Berlin"}
    

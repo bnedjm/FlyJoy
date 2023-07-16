@@ -1,22 +1,21 @@
 
 <template>
   <div class="flight-card" v-for="flightItem in flight" :key="flightItem.id" >
-        <div class="flight-card-header">
-       <font-awesome-icon :icon="['fasl', 'plane-departure']" />
-       <div class="dates">
-
-        <span class="date" >{{ flightItem.outbound_date }}</span>
-        <span class="date">{{ flightItem.inbound_date }}</span>
-
-      </div>
-      <font-awesome-icon icon="fa-solid fa-plane-departure" flip="horizontal"/>
-        </div>
-    <!-- <div class="flight-card-body"> -->
+       
      
 
       <div class="cities ">
-        <table class="table   ">
+        <table class="table">
         <tbody>
+          <tr>
+            <th><font-awesome-icon :icon="['fasl', 'plane-departure']" style="color: #3453d1;" /></th>
+            <th></th>
+            <th> <span class="date" >{{ flightItem.outbound_date }}</span></th>
+            <th> <font-awesome-icon :icon="['fas', 'arrow-right-arrow-left']" style="color: #3453d1;"  /> </th>
+            <th><span class="date">{{ flightItem.inbound_date }}</span></th>
+            <th></th>
+            <th> <font-awesome-icon icon="fa-solid fa-plane-departure" flip="horizontal" style="color: #3453d1;"/></th>
+          </tr>
     <tr >
       <th class="time" scope="col">17:00</th>
       <th class="city-code" scope="col">{{ flightItem.departure_airport_code }}</th>

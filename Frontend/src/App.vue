@@ -1,6 +1,5 @@
 <script setup>
 import FlightBookingForm from './components/form.vue'
-import flightCard from './components/flightCard.vue';
 </script>
 
 <template>
@@ -12,7 +11,7 @@ import flightCard from './components/flightCard.vue';
   </div>
   
   <div class=" flex-item d-flex flex-wrap ">
-  <flightCard></flightCard>
+  <router-view></router-view>
   </div>
 
 

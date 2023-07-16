@@ -12,6 +12,25 @@
    <input type="checkbox" id="input-group" v-model="isReturnSelected" @click="isOnewaySelected=false" />
    <label for="input-group" class="text-black">Round Trip</label>
     </div>
+    <table class="input5">
+      <tbody>
+        <tr>
+          <th ><font-awesome-icon    @click="increment" :icon="['fas', 'user']"   style="color: #3453d1;"/></th>
+          <th><span>Adults</span></th>
+          <th ><button  :disabled="numberOfAdults === 0"><font-awesome-icon @click="decrement('numberOfAdults')" :icon="['fas', 'minus']" /></button></th>
+          <th ><span >{{ numberOfAdults }}</span></th>
+          <th ><button><font-awesome-icon  @click="increment('numberOfAdults')"   :icon="['fas', 'plus']" /></button></th>
+        </tr>
+        <tr>
+          <th ><font-awesome-icon :icon="['fas', 'suitcase-rolling'] "  style="color: #3453d1;"/></th>
+          <th ><span>Bags</span></th>
+          <th ><button :disabled="numberOfBags === 0"><font-awesome-icon @click="decrement('numberOfBags')" :icon="['fas', 'minus']" /></button></th>
+          <th ><span >{{ numberOfBags }}</span></th>
+          <th ><button><font-awesome-icon  @click="increment('numberOfBags')"   :icon="['fas', 'plus']" /></button></th>
+        </tr>
+      </tbody>
+    </table>
+
 
     <div id="input">
       <input type="text" id="input-group" v-model="from" placeholder="From"/>
@@ -36,7 +55,8 @@
     </div>
 
  <div class="btnStyle">
-  <button class="search" type="submit" @click="andleSubmit">Search</button>
+  <!-- <router-link to="/searches"> <button class="search" type="submit" @click="andleSubmit">Search</button></router-link> -->
+  <button class="search" type="submit" @click="handleSubmit">Search</button>
  </div>
     
         </div>
@@ -54,6 +74,8 @@
     name: 'FlightBookingForm',
     data() {
       return {
+        numberOfAdults:1,
+        numberOfBags:0,
         from: '',
         to: '',
         departureDate: null,
@@ -68,6 +90,14 @@
       };
     },
     methods: {
+      increment(property) {
+      this[property]++;
+    },
+    decrement(property) {
+      if (this[property] > 0) {
+      this[property]--;
+      }},
+
       handleSubmit() {
         console.log('Form submitted');
         console.log('Is Return Selected:', this.isReturnSelected);
@@ -80,13 +110,15 @@
         console.log('Duration from: ',this.stayDurationFrom);
         console.log('Duration to: ',this.stayDurationTo);
         console.log('Max stopovers: ',this.maxStopOver);
-        fetch('https://flyjoy-41368-default-rtdb.europe-west1.firebasedatabase.app/flightSearch.json',{
+        fetch('http://54.159.155.157/searches',{
   method:'POST',
   headers:{
     'content-type':'application/json'
           },
   body:JSON.stringify({
             flight_type: this.flightType,
+            adults:this.numberOfAdults,
+            adult_hold_bag:this.numberOfBags,
             fly_from: this.from,
             fly_to: this.to,
             date_from: this.departureDate,
@@ -99,6 +131,7 @@
        })
   }
 )
+this.$router.push('/searches')
    
       },
       
@@ -237,6 +270,22 @@
   text-align: center;
   margin: 30px;
 }
+
+
+
+ .input5 th {
+  padding-left: 10px;
+  padding-bottom: 5px;
+ }
+.input5 button{
+border-color: #3453d1;
+  color:#3453d1;
+  border-radius: 50%;
+  background-color: white
+}
+
+
+
 
 </style>
   
