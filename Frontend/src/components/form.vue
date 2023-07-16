@@ -30,12 +30,18 @@
         </tr>
       </tbody>
     </table>
-
-
+    
     <div id="input">
-      <input type="text" id="input-group" v-model="from" placeholder="From"/>
-        <input type="text" id="input-group" v-model="to"  placeholder="To"/>
+      <SearchBar   placeholder="Where from?" @selected-airport="handleOutboundAirport"/>
+      <SearchBar   placeholder="Where to?"  @selected-airport="handleInboundAirport"/> 
     </div>
+    
+
+     <!-- <div id="input">
+      <input type="text" id="input-group" v-model="from" placeholder="From" @input="filteredFlightData"/>
+        <input type="text" id="input-group" v-model="to"  placeholder="To"/>
+    </div> -->
+
 
     <div id="input2">
         
@@ -53,27 +59,38 @@
     <input type="number" min="0" id="input-group"  v-model="stayDurationTo" placeholder="To"  />
     <input type="number" min="0" id="input-group"  placeholder="Max Stop overs" v-model="maxStopOver" />
     </div>
+   
 
  <div class="btnStyle">
   <!-- <router-link to="/searches"> <button class="search" type="submit" @click="andleSubmit">Search</button></router-link> -->
   <button class="search" type="submit" @click="handleSubmit">Search</button>
  </div>
-    
+    <div id="input">
+
+      
+    </div>
         </div>
       
 
   
-      <!-- Add any other form fields you require -->
+
   
       
     </div>
   </template>
   
   <script>
+  import airportData  from '../data.json'
+  import SearchBar from './seachbar.vue'
+
   export default {
+    components:{
+      SearchBar
+    },
     name: 'FlightBookingForm',
     data() {
       return {
+        airportData: airportData,
         numberOfAdults:1,
         numberOfBags:0,
         from: '',
@@ -86,11 +103,20 @@
         stayDurationTo:null,
         maxStopOver:null,
         flightType:((this.isOnewaySelected===true)?this.isOnewaySelected="oneway":this.isReturnSelected='round'),
+
+     
         // Add any other form fields you require
       };
     },
+
     methods: {
-      increment(property) {
+handleOutboundAirport(data){
+this.from=data
+  },
+  handleInboundAirport(data){
+    this.to=data
+  },     
+ increment(property) {
       this[property]++;
     },
     decrement(property) {
@@ -103,6 +129,8 @@
         console.log('Is Return Selected:', this.isReturnSelected);
         console.log('Is One way Selected:', this.isOnewaySelected);
         console.log('Flight type: ', this.flightType);
+        console.log('Number of adults', this.numberOfAdults);
+        console.log('Number of bags', this.numberOfBags);
         console.log('From:', this.from);
         console.log('To:', this.to);
         console.log('Departure Date:', this.departureDate);
@@ -178,6 +206,11 @@ this.$router.push('/searches')
     outline: none;
     background: transparent ;
 
+}
+#input{
+  display: flex;
+    align-items:baseline;
+   
 }
 #input3{
   display: flex;

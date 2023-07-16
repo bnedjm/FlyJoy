@@ -1,5 +1,7 @@
 <script setup>
 import FlightBookingForm from './components/form.vue'
+import SearchBar from './components/seachbar.vue'
+
 </script>
 
 <template>
@@ -13,9 +15,10 @@ import FlightBookingForm from './components/form.vue'
   <div class=" flex-item d-flex flex-wrap ">
   <router-view></router-view>
   </div>
-
+  
 
 </div>
+
 </template>
 
 <style scoped>
